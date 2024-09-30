@@ -19,3 +19,4 @@ export default {
   generateAccessToken,
   verifyAccessToken,
 };
+

@@ -4,6 +4,7 @@ const jwtAuth = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     if (jwtService.verifyAccessToken(token)) {
+        req.body.user = jwtService.verifyAccessToken(token)
       next();
     } else {
       throw new Error("");
