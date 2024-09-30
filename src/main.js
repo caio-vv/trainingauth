@@ -9,3 +9,5 @@ app.use(express.json())
 
 app.use("/user", userRouter)
 app.use("/post", postRouter)
+
+app.listen(process.env.API_PORT, ()=> {console.log("servidor rodando")})

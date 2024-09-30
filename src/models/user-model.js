@@ -14,7 +14,6 @@ const userSchema = new Schema({
   nickname: {
     type: String,
     required: false,
-    default: this.email
   },
 });
 

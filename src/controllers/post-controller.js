@@ -1,4 +1,4 @@
-import Post from "../models/post-model";
+import Post from "../models/post-model.js";
 
 export const postStore = async (req, res) => {
     try {
@@ -32,6 +32,6 @@ export const postShow = async (req, res) => {
         const content = await Post.findById(req.params.id).exec()
         res.json(content)
     } catch (error) {
-        
+        res.json(400)
     }
 }
