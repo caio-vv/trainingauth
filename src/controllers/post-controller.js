@@ -2,7 +2,10 @@ import Post from "../models/post-model.js";
 
 export const postStore = async (req, res) => {
     try {
-        const content = await Post.create(req.body)
+        const content = await Post.create({
+            text: req.body.text,
+            user: req.user
+        })
         res.json(content)
     } catch (error) {
         res.status(400).send(error)
@@ -11,7 +14,7 @@ export const postStore = async (req, res) => {
 
 export const postDelete = async (req, res) => {
     try {
-        await Post.findByIdAndDelete(req.params.id).exec()
+        await Post.findByIdAndDelete(req.params.id).exec() //verificar se o usuario é o dono do post
         res.json()
     } catch (error) {
         res.json(400)

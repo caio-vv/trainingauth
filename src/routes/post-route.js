@@ -3,10 +3,10 @@ import { postDelete, postIndex, postStore,postShow, } from "../controllers/post-
 import jwtAuth from "../middlewares/jwt-auth.js"
 
 const router = Router()
-
-router.post("/", jwtAuth, postStore)
-router.delete("/:id", jwtAuth, postDelete)
-router.get("/posts", jwtAuth, postIndex)
-router.get("/:id", jwtAuth, postShow)
+router.use(jwtAuth)
+router.post("/", postStore)
+router.delete("/:id", postDelete)
+router.get("/posts", postIndex)
+router.get("/:id", postShow)
 
 export default router

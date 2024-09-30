@@ -3,8 +3,8 @@ import jwtService from "../services/jwt-service.js";
 const jwtAuth = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    if (jwtService.verifyAccessToken(token)) {
-        req.body.user = jwtService.verifyAccessToken(token)
+    const user = req.user = jwtService.verifyAccessToken(token)
+    if (user) {
       next();
     } else {
       throw new Error("");

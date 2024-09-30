@@ -19,6 +19,9 @@ const userSchema = new Schema({
 
 userSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, 10);
+  if (this.nickname == undefined){
+    this.nickname == this.email
+  }
 });
 
 userSchema.methods.isValidPassword = async function (password) {
